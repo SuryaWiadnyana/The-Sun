@@ -52,7 +52,7 @@ func (b *mongoRepoBuku) GetAll(ctx context.Context) ([]domain.Buku, error) {
 
 func (b *mongoRepoBuku) CreateBuku(ctx context.Context, buku *domain.Buku) (domain.Buku, error) {
 	BookList := b.DB.Collection(_Buku)
-	
+
 	data, err := BookList.InsertOne(ctx, buku)
 	if err != nil {
 		return domain.Buku{}, err
@@ -84,9 +84,9 @@ func (b *mongoRepoBuku) UpdateBuku(ctx context.Context, body *domain.Buku) error
 
 	ID := bson.M{"_id": body.ID, "updated_at": nil}
 	Upd := bson.M{
-		"judul": body.Judul,
+		"judul":   body.Judul,
 		"penulis": body.Penulis,
-		"status": body.Status,
+		"status":  body.Status,
 		"halaman": body.Halaman,
 	}
 	update := bson.M{"$set": Upd}
@@ -99,7 +99,7 @@ func (b *mongoRepoBuku) UpdateBuku(ctx context.Context, body *domain.Buku) error
 	return nil
 }
 
-func (b * mongoRepoBuku) DeleteBuku(ctx context.Context, id string) error {
+func (b *mongoRepoBuku) DeleteBuku(ctx context.Context, id string) error {
 	BookList := b.DB.Collection(_Buku)
 
 	_, err := BookList.DeleteOne(ctx, bson.M{"id": id})

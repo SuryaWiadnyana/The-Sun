@@ -1,11 +1,11 @@
 package db
 
 import (
-	"pertemuan_7/config"
 	"context"
 	"errors"
 	"fmt"
 	"log"
+	"pertemuan_7/config"
 
 	"github.com/pandeptwidyaop/golog"
 
@@ -18,6 +18,7 @@ var Mongocontext context.Context
 
 func InitMongoDB() {
 	connection := config.GetMongoConnString()
+	fmt.Println(connection)
 	database := config.GetMongoDatabase()
 	fmt.Println(connection)
 	fmt.Println(database)

@@ -24,7 +24,7 @@ var ServiceBuku domain.ServiceBuku
 
 func bootDatabase() {
 
-	godotenv.Load("../.env")
+	godotenv.Load(".env")
 	db.InitMongoDB()
 }
 
